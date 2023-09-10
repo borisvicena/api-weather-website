@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <form action="/search" method="get">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="cityName" name="cityName" placeholder="Name a city" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+        <p>{{ city }}</p>
+    </form>
+{% endblock %}

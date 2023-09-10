@@ -1,0 +1,24 @@
+* {
+    font-family: 'Roboto';
+    color: #ffffff;
+}
+
+body {
+    background-color: #87CEEB;
+}
+
+nav {
+    background-color: #046582;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#time-container {
+    font-size: 25px;
+}
+
+h1 {
+    font-weight: 600;
+}

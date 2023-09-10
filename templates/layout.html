@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Implementation -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    <!-- Fonts 'Poppins' Implementation -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <!-- CSS Implementation -->
+    <link href="/static/style.css" rel="stylesheet">
+
+    <!-- Favicon Implementation -->
+    <link href="/static/favicon.png" rel="icon">
+
+    <title>Weather App</title>
+</head>
+<body>
+    <header>
+        <nav class="">
+            <h4 style="display: inline;">Current time: </h4>
+            <div id="time-container" style="display: inline;">
+                <!-- Time will be displayed here -->
+            </div>
+            <div>
+                {{ weather }}
+            </div>
+            <script>
+                function updateTime() {
+                    fetch('/get_time')
+                        .then(response => response.json())
+                        .then(data => {
+                            const timeContainer = document.getElementById('time-container');
+                            timeContainer.textContent = data.time;
+                        });
+                }
+                updateTime();
+                setInterval(updateTime, 1000);
+            </script>
+        </nav>
+    </header>
+    <main class="container text-center">
+        <img src="/static/favicon.png" style="width: auto; height: 4em; vertical-align: middle;">
+        <h1 class="mt-5" style="display: inline; vertical-align: middle;">Weather App</h1>
+        {% block main %} {% endblock %}
+    </main>    
+    <footer class="mb-5 small text-center text-muted">
+        Data provided by <a href="https://openweathermap.org/">OpenWeatherMap</a>
+    </footer>
+</body>
+</html>
