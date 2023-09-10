@@ -9,6 +9,10 @@ app = Flask(__name__)
 # OpenWeatherMap API Configuration
 api_key = '592184eab34bceaeae2de4baa2f05256'
 
+# user_input = input("Enter a city: ")
+# weather_data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
+
+# print(weather_data.json())
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -25,11 +29,15 @@ def search():
     weather_data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
     if weather_data.status_code == 200:
         weather = weather_data.json()['weather'][0]['main']
+        weather_desc = weather_data.json()['weather'][0]['description']
         temp_fahrenheit = weather_data.json()['main']['temp']
         temp_celsius = (temp_fahrenheit - 32) * 5 / 9
+        wind = round(weather_data.json()['wind']['speed'] * 1.609, 2)
+        humidity = weather_data.json()['main']['humidity']
+        country_code = weather_data.json()['sys']['country']
         if not user_input:
             return render_template("404.html")
-        return render_template("search.html", city=user_input, temperature=math.trunc(temp_celsius), weather=weather)
+        return render_template("search.html", city=user_input, temperature=math.trunc(temp_celsius), weather=weather, weather_desc=weather_desc, wind=wind, humidity=humidity, country_code=country_code)
     else:
        return render_template("404.html")
 

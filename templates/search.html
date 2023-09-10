@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 
 {% block result %}
-    <h2><i class="fa-solid fa-location-arrow"></i> {{ city }}</h2>
+    <i class="fa-solid fa-location-arrow"></i>
+    <h2> {{ city }}, {{ country_code }}</h2>
     <hr>
-    <h2><i class="fa-solid fa-temperature-three-quarters"></i> {{ temperature }}°C</h2>
+    <i class="fa-solid fa-temperature-three-quarters"></i>
+    <h2> {{ temperature }}°C</h2>
     <hr>
-    <h2><i class="fa-solid fa-cloud-sun"></i> {{ weather }}</h2>
+    <i class="fa-solid fa-cloud-sun"></i>
+    <h2> {{ weather }}, {{ weather_desc }}</h2>
+    <hr>
+    <i class="fa-solid fa-wind"></i>
+    <h2> {{ wind }}km/h</h2>
+    <hr>
+    <i class="fa-solid fa-droplet"></i>
+    <h2> {{ humidity }}%</h2>
 {% endblock %}
