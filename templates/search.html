@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
-{% block main %}
-        <p>Temperature in {{ city }} is {{ temperature }} °C</p>
-        <a href="/" class="btn btn-primary">Go Back</a>
+{% block result %}
+    <h2><i class="fa-solid fa-location-arrow"></i> {{ city }}</h2>
+    <hr>
+    <h2><i class="fa-solid fa-temperature-three-quarters"></i> {{ temperature }}°C</h2>
+    <hr>
+    <h2><i class="fa-solid fa-cloud-sun"></i> {{ weather }}</h2>
 {% endblock %}

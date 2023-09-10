@@ -29,7 +29,7 @@ def search():
         temp_celsius = (temp_fahrenheit - 32) * 5 / 9
         if not user_input:
             return render_template("404.html")
-        return render_template("search.html", city=user_input, temperature=math.trunc(temp_celsius))
+        return render_template("search.html", city=user_input, temperature=math.trunc(temp_celsius), weather=weather)
     else:
        return render_template("404.html")
 
