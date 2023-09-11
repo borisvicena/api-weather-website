@@ -1,2 +1,2 @@
 # api-weather-website
-Weather website through OpenWeatherMap API
+Weather website using OpenWeatherMap API
