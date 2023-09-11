@@ -1,18 +1,72 @@
 {% extends "layout.html" %}
 
 {% block result %}
-    <i class="fa-solid fa-location-arrow"></i>
-    <h2> {{ city }}, {{ country_code }}</h2>
-    <hr>
-    <i class="fa-solid fa-temperature-three-quarters"></i>
-    <h2> {{ temperature }}°C</h2>
-    <hr>
-    <i class="fa-solid fa-cloud-sun"></i>
-    <h2> {{ weather }}, {{ weather_desc }}</h2>
-    <hr>
-    <i class="fa-solid fa-wind"></i>
-    <h2> {{ wind }}km/h</h2>
-    <hr>
-    <i class="fa-solid fa-droplet"></i>
-    <h2> {{ humidity }}%</h2>
+    <table>
+        <tr>
+            <th>Location <i class="fa-solid fa-location-arrow"></i></th>
+            <th>Temperature <i class="fa-solid fa-temperature-three-quarters"></i></th>
+            <th>Wather <i class="fa-solid fa-cloud-sun"></i></th>
+            <th>Wind <i class="fa-solid fa-wind"></i></th>
+            <th>Humidity <i class="fa-solid fa-droplet"></i></th>
+        </tr>
+        <tr>
+            <td><h3>{{ city }}, {{ country_code }}</h3></td>
+            <td><h3>{{ temperature }}°C</h3></td>
+            <td><h3>{{ weather }}, {{ weather_desc }}</h3></td>
+            <td><h3>{{ wind }}km/h</h3></td>
+            <td><h3>{{ humidity }}%</h3></td>
+        </tr>
+    </table>
+{% endblock %}
+
+{% block map %}
+    <style>
+        .container {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 999;
+            border-radius: 15px;
+            padding: 0;
+        }
+    </style>
+
+    <p>Map <i class="fa-solid fa-location-dot"></i></p>
+    <div class="container" style="width: 100%;">
+        <div id='map' style='height:200px; border-radius: 15px;'></div><br/><br/>
+	</div>
+
+
+    <script>
+
+        longitude = '{{ longitude }}'
+        latitude = '{{ latitude }}'
+
+        
+
+        mapboxgl.accessToken = "{{ mapbox_access_token }}";
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/navigation-night-v1',
+            center: [longitude, latitude],
+            zoom: 1,
+        });
+
+        var marker = new mapboxgl.Marker()
+            .setLngLat([longitude, latitude])
+            .addTo(map);
+
+        
+        function flyToNewCoordinates(){
+
+            map.flyTo({
+                center: [longitude, latitude],
+                zoom: 5,
+                speed: 1.5,
+                curve: 0.3,
+            });
+        }
+
+        flyToNewCoordinates()
+    </script>
 {% endblock %}

@@ -28,6 +28,7 @@ def search():
     user_input = request.args.get("cityName")
     weather_data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
     if weather_data.status_code == 200:
+        name = weather_data.json()['name']
         weather = weather_data.json()['weather'][0]['main']
         weather_desc = weather_data.json()['weather'][0]['description']
         temp_fahrenheit = weather_data.json()['main']['temp']
@@ -35,9 +36,15 @@ def search():
         wind = round(weather_data.json()['wind']['speed'] * 1.609, 2)
         humidity = weather_data.json()['main']['humidity']
         country_code = weather_data.json()['sys']['country']
+
+        longitude = weather_data.json()['coord']['lon']
+        latitude = weather_data.json()['coord']['lat']
+
+        mapbox_access_token = 'pk.eyJ1IjoiYm9yaXN2aWNlbmEiLCJhIjoiY2xtZXhkNjYyMDI5ZTNqcnlkZWt5aTl2NiJ9.2dOC8qHUVmf2SoSmxUleOQ'
+
         if not user_input:
             return render_template("404.html")
-        return render_template("search.html", city=user_input, temperature=math.trunc(temp_celsius), weather=weather, weather_desc=weather_desc, wind=wind, humidity=humidity, country_code=country_code)
+        return render_template("search.html", city=name, temperature=math.trunc(temp_celsius), weather=weather, weather_desc=weather_desc, wind=wind, humidity=humidity, country_code=country_code, longitude=longitude, latitude=latitude, mapbox_access_token=mapbox_access_token)
     else:
        return render_template("404.html")
 
