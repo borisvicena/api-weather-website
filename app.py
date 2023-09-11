@@ -44,7 +44,8 @@ def search():
 
         if not user_input:
             return render_template("404.html")
-        return render_template("search.html", city=name, temperature=math.trunc(temp_celsius), weather=weather, weather_desc=weather_desc, wind=wind, humidity=humidity, country_code=country_code, longitude=longitude, latitude=latitude, mapbox_access_token=mapbox_access_token)
+        return render_template("search.html", city=name, temperature=math.trunc(temp_celsius), weather=weather, weather_desc=weather_desc, 
+                               wind=wind, humidity=humidity, country_code=country_code, longitude=longitude, latitude=latitude, mapbox_access_token=mapbox_access_token)
     else:
        return render_template("404.html")
 
