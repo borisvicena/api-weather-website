@@ -15,7 +15,7 @@ git clone <url_of_this_repo>
 Second, you have to get your API keys from [OpenWeatherMap](https://www.openweathermap.org) and [Mapbox](https://www.mapbox.com) and put your API keys in the app.py file.
 
 > api_key is for openweathermap api <br>
-> mapbox_access_token is for mapbox access toke
+> mapbox_access_token is for mapbox access token
 
 You can get access to your api and token through the links provided above!
 
