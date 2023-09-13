@@ -2,6 +2,9 @@
 
 Weathercast is a simple web-based weather application that shows data and map for a user-given city.
 
+## Technology used
+> - HTML, CSS, JavaScript and Python (Flask)
+
 ## Installation
 
 First step is to clone the repository into your local directory.
