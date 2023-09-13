@@ -9,7 +9,7 @@ Weathercast is a simple web-based weather application that shows data and map fo
 
 First step is to clone the repository into your local directory.
 ```bash
-git clone <name_of_this_repo>
+git clone <url_of_this_repo>
 ```
 
 Second, you have to get your API keys from [OpenWeatherMap](https://www.openweathermap.org) and [Mapbox](https://www.mapbox.com) and put your API keys in the app.py file.
