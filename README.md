@@ -1,4 +1,4 @@
-# Weathercast ☀⛅
+# Weathercast :sun_behind_small_cloud:
 
 Weathercast is a simple web-based weather application that shows data and map for a user-given city.
 
